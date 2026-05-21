@@ -5,9 +5,12 @@ function getRandomRGBValue() {
 }
 
 main.addEventListener("mouseover", (event) => {
-    console.log(event.target)
-    if (!event.target.classList.contains("cell")) return
-    event.target.style.backgroundColor = `rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()})`
+    if (!event.target.classList.contains("cell")) return;
+    event.target.style.backgroundColor = `rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()})`;
+    let opacityValue = event.target.style.opacity;
+    if (opacityValue === "") event.target.style.opacity = 0.1;
+    else if (opacityValue == 1) return;
+    else event.target.style.opacity = +opacityValue + 0.1
 })
 
 function createGrid (numberOfCells) {
