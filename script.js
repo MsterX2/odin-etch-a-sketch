@@ -1,5 +1,15 @@
 const main = document.querySelector("#main")
 
+function getRandomRGBValue() {
+    return Math.floor(Math.random() * 256)
+}
+
+main.addEventListener("mouseover", (event) => {
+    console.log(event.target)
+    if (!event.target.classList.contains("cell")) return
+    event.target.style.backgroundColor = `rgb(${getRandomRGBValue()}, ${getRandomRGBValue()}, ${getRandomRGBValue()})`
+})
+
 function createGrid (numberOfCells) {
     const porcentaje = 100 / numberOfCells;
     for (let i = 0; i<numberOfCells**2;i++) {
@@ -7,9 +17,6 @@ function createGrid (numberOfCells) {
         cell.classList.add("cell")
         cell.style.height = porcentaje + "%" 
         cell.style.width = porcentaje + "%";
-        cell.addEventListener("mouseenter", () => {
-            cell.style.backgroundColor = "aqua";
-        })
         main.appendChild(cell)
     }
 }
